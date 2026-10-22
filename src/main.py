@@ -21,7 +21,9 @@ def ejecutar_interfaz_cajero():
 
         sys.exit(0)
     else:
-        print("\n[ERROR CRÍTICO]: El monto ingresado debe ser un número decimal positivo.")
+        print(
+            "\n[ERROR CRÍTICO]: El monto ingresado debe ser un número decimal positivo."
+        )
         sys.exit(1)
 
 

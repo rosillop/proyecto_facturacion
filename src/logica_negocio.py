@@ -7,7 +7,7 @@ def calcular_descuento(subtotal_bruto: float, tipo_cliente: str) -> float:
     PORCENTAJE_REG_BAJO: float = 0.03
 
     if tipo_cliente == "VIP":
-        if subtotal_bruto  > 500.0:
+        if subtotal_bruto > 500.0:
             return subtotal_bruto * PORCENTAJE_VIP_ALTO
         else:
             return subtotal_bruto * PORCENTAJE_VIP_BAJO
@@ -34,11 +34,11 @@ def procesar_factura(subtotal_bruto: float, tipo_cliente: str) -> dict:
         "descuento": round(monto_descuento, 2),
         "subtotal_neto": round(subtotal_con_descuento, 2),
         "igv": round(monto_igv, 2),
-        "total_pagar": round(total_a_pagar, 2)
+        "total_pagar": round(total_a_pagar, 2),
     }
 
 
 def validar_numero_positivo(entrada_texto: str) -> bool:
     """Valida si el texto ingresado es un número decimal positivo válido."""
-    texto_limpio = entrada_texto.strip().replace('.', '', 1)
+    texto_limpio = entrada_texto.strip().replace(".", "", 1)
     return texto_limpio.isdigit() and float(entrada_texto) > 0
