@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 1. Obtener codigo fuente
+      - name: 1. Obtener código fuente
         uses: actions/checkout@v4
 
       - name: 2. Configurar Python 3.11
@@ -24,7 +24,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8 pytest
 
-      - name: 4. Auditar codigo con Flake8
+      - name: 4. Auditar código con Flake8
         run: |
           flake8 src/ scripts/ --max-line-length=100
 
@@ -32,13 +32,13 @@ jobs:
         run: |
           pytest tests/test_facturacion_pytest.py
 
-      - name: 6. Ejecutar script personalizado de auditoria
+      - name: 6. Ejecutar script personalizado de auditoría
         env:
           PYTHONPATH: .
         run: |
           python scripts/auditoria_sistema.py
 
-      - name: 7. Publicar artefacto de auditoria
+      - name: 7. Publicar artefacto de auditoría
         uses: actions/upload-artifact@v4
         with:
           name: reporte-auditoria-calidad
@@ -52,9 +52,10 @@ jobs:
           echo "- **Reglas de Negocio:** Pytest validó todos los cálculos contables." >> $GITHUB_STEP_SUMMARY
           echo "- **Script Interno:** Auditoría ejecutada y empaquetada como artefacto." >> $GITHUB_STEP_SUMMARY
           echo "- **Estado Final:** Listo para distribución continua (CD)." >> $GITHUB_STEP_SUMMARY
+
       - name: 9. Ejecutar script de mantenimiento
-        env:  
-           PYTHONPATH: .
+        env:
+          PYTHONPATH: .
         run: |
           python scripts/mantenimiento_sistema.py
 
